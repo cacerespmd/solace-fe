@@ -240,12 +240,13 @@ onMounted(fetchDashboard);
     <!-- Header -->
     <div class="flex flex-wrap items-start justify-between gap-4">
       <div>
-        <h1 class="text-2xl font-bold text-foreground">
-          Dashboard Overview
+        <p class="mb-3 text-xs font-semibold uppercase tracking-widest text-primary">Store overview</p>
+        <h1 class="text-2xl font-semibold tracking-tight text-foreground">
+          A look at your store
         </h1>
 
         <p class="mt-1 text-sm text-muted-foreground">
-          Welcome to your Voltech admin dashboard.
+          Keep up with your products, orders, and customer requests.
         </p>
       </div>
 
@@ -442,7 +443,7 @@ onMounted(fetchDashboard);
       <div class="mt-5 flex flex-wrap gap-3">
         <RouterLink
           to="/admin/products"
-          class="rounded-xl bg-primary px-4 py-2.5 text-sm font-semibold text-surface hover:bg-primary-hover"
+          class="rounded-xl bg-primary px-4 py-2.5 text-sm font-semibold text-on-primary hover:bg-primary-hover"
         >
           Manage Products
         </RouterLink>

@@ -128,7 +128,7 @@ watch(
 
       <RouterLink
         to="/"
-        class="mt-5 inline-flex rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-surface"
+        class="mt-5 inline-flex rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-on-primary"
       >
         Back to Products
       </RouterLink>
@@ -250,7 +250,7 @@ watch(
             <button
               type="button"
               :disabled="!inStock || addingToCart"
-              class="w-full rounded-xl bg-primary px-6 py-4 text-sm font-semibold text-surface transition hover:bg-primary-hover disabled:cursor-not-allowed disabled:bg-border"
+              class="w-full rounded-xl bg-primary px-6 py-4 text-sm font-semibold text-on-primary transition hover:bg-primary-hover disabled:cursor-not-allowed disabled:bg-border"
               @click="handleAddToCart"
             >
               {{

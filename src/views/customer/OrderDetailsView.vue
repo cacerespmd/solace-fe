@@ -664,7 +664,7 @@ watch(
                   class="mx-auto flex h-9 w-9 items-center justify-center rounded-full border-2 text-sm font-bold sm:h-11 sm:w-11"
                   :class="
                     index <= currentDeliveryStep
-                      ? 'border-primary bg-primary text-surface'
+                      ? 'border-primary bg-primary text-on-primary'
                       : 'border-border bg-surface text-muted-foreground'
                   "
                 >
@@ -715,7 +715,7 @@ watch(
                 <button
                   type="button"
                   :disabled="receiving"
-                  class="shrink-0 rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-surface transition hover:bg-primary-hover disabled:cursor-not-allowed disabled:opacity-50"
+                  class="shrink-0 rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-on-primary transition hover:bg-primary-hover disabled:cursor-not-allowed disabled:opacity-50"
                   @click="openReceiveConfirmation"
                 >
                   Confirm Order Received
@@ -1118,7 +1118,7 @@ watch(
           <button
             type="button"
             :disabled="receiving"
-            class="rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-surface transition hover:bg-primary-hover disabled:cursor-not-allowed disabled:opacity-50"
+            class="rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-on-primary transition hover:bg-primary-hover disabled:cursor-not-allowed disabled:opacity-50"
             @click="confirmReceived"
           >
             {{ receiving ? "Confirming..." : "Yes, I've Received It" }}

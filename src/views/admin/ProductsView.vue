@@ -34,7 +34,8 @@ onMounted(fetchProducts);
   <div>
     <div class="mb-8 flex flex-wrap items-center justify-between gap-4">
       <div>
-        <h1 class="text-2xl font-bold text-foreground">Products</h1>
+        <p class="mb-3 text-xs font-semibold uppercase tracking-widest text-primary">Your catalog</p>
+        <h1 class="text-2xl font-semibold tracking-tight text-foreground">Products</h1>
         <p class="mt-1 text-sm text-muted-foreground">
           Manage your Voltech store inventory.
         </p>
@@ -42,7 +43,7 @@ onMounted(fetchProducts);
 
       <RouterLink
         to="/admin/products/create"
-        class="inline-flex rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-surface hover:bg-primary-hover"
+        class="inline-flex rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-on-primary hover:bg-primary-hover"
       >
         + Add Product
       </RouterLink>

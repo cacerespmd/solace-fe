@@ -239,7 +239,7 @@ watch(isOpen, (open) => {
       <!-- CHAT HEADER -->
       <!-- ==================================== -->
       <div
-        class="flex shrink-0 items-center gap-3 bg-brand-gradient px-4 py-4 text-surface"
+        class="flex shrink-0 items-center gap-3 bg-brand-gradient px-4 py-4 text-on-primary"
       >
         <div
           class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-surface/20 text-xl"
@@ -310,7 +310,7 @@ watch(isOpen, (open) => {
               class="whitespace-pre-wrap break-words rounded-2xl px-3.5 py-2.5 text-sm leading-relaxed"
               :class="
                 message.role === 'user'
-                  ? 'rounded-br-sm bg-primary text-surface'
+                  ? 'rounded-br-sm bg-primary text-on-primary'
                   : 'rounded-bl-sm border border-border bg-surface text-foreground'
               "
             >
@@ -502,7 +502,7 @@ watch(isOpen, (open) => {
 
         <button
           type="button"
-          class="rounded-lg bg-primary px-4 py-2 text-sm font-medium text-surface transition hover:bg-primary-hover"
+          class="rounded-lg bg-primary px-4 py-2 text-sm font-medium text-on-primary transition hover:bg-primary-hover"
           @click="goToLogin"
         >
           Log in
@@ -544,7 +544,7 @@ watch(isOpen, (open) => {
             type="submit"
             :disabled="loading || !input.trim()"
             aria-label="Send message"
-            class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary text-surface transition hover:bg-primary-hover disabled:cursor-not-allowed disabled:opacity-40"
+            class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary text-on-primary transition hover:bg-primary-hover disabled:cursor-not-allowed disabled:opacity-40"
           >
             <svg
               width="19"
@@ -582,7 +582,7 @@ watch(isOpen, (open) => {
             : 'Open SolaceAI chat'
         "
         :aria-expanded="isOpen"
-        class="flex h-14 w-14 items-center justify-center rounded-full bg-primary text-surface shadow-lg shadow-primary-border transition hover:scale-105 hover:bg-primary-hover"
+        class="flex h-14 w-14 items-center justify-center rounded-full bg-primary text-on-primary shadow-lg shadow-primary-border transition hover:scale-105 hover:bg-primary-hover"
         @click="toggleChat"
       >
         <!-- Chat icon -->

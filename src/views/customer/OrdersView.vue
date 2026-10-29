@@ -193,7 +193,8 @@ const totalOrders = computed(() => orders.value.length);
 
     <div class="mb-8 flex flex-wrap items-start justify-between gap-4">
       <div>
-        <h1 class="text-3xl font-bold text-foreground">My Orders</h1>
+        <p class="mb-3 text-xs font-semibold uppercase tracking-widest text-primary">Your account</p>
+        <h1 class="text-3xl font-semibold tracking-tight text-foreground">My orders</h1>
 
         <p class="mt-2 text-sm text-muted-foreground">
           View your purchases, delivery progress, and order details.
@@ -275,7 +276,7 @@ const totalOrders = computed(() => orders.value.length);
 
       <RouterLink
         to="/"
-        class="mt-6 inline-flex rounded-xl bg-primary px-6 py-3 text-sm font-semibold text-surface transition hover:bg-primary-hover"
+        class="mt-6 inline-flex rounded-xl bg-primary px-6 py-3 text-sm font-semibold text-on-primary transition hover:bg-primary-hover"
       >
         Browse Products
       </RouterLink>
@@ -517,7 +518,7 @@ const totalOrders = computed(() => orders.value.length);
               name: 'customer-order-details',
               params: { id: order.id },
             }"
-            class="inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-surface transition hover:bg-primary-hover"
+            class="inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-on-primary transition hover:bg-primary-hover"
           >
             View Order Details
 

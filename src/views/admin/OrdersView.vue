@@ -686,7 +686,7 @@ onMounted(fetchOrders);
                 <button
                   type="button"
                   :disabled="saving"
-                  class="rounded-lg bg-red-600 px-4 py-2 text-sm font-semibold text-surface hover:bg-red-700 disabled:opacity-50"
+                  class="rounded-lg bg-red-600 px-4 py-2 text-sm font-semibold text-on-primary hover:bg-red-700 disabled:opacity-50"
                   @click="decideCancellation('cancellation_accepted')"
                 >
                   {{ saving ? 'Saving...' : 'Cancel Order' }}
@@ -724,7 +724,7 @@ onMounted(fetchOrders);
 
               <button
                 :disabled="saving"
-                class="rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-surface disabled:opacity-50"
+                class="rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-on-primary disabled:opacity-50"
                 @click="shipOrder"
               >
                 {{ saving ? "Shipping..." : "Mark as Shipped" }}
@@ -738,7 +738,7 @@ onMounted(fetchOrders);
             >
               <button
                 :disabled="saving"
-                class="rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-surface disabled:opacity-50"
+                class="rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-on-primary disabled:opacity-50"
                 @click="
                   updateDeliveryStatus(
                     nextStatus(selectedOrder.delivery.status)

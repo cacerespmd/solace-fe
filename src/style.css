@@ -1,23 +1,24 @@
 @import "tailwindcss";
 
 :root {
+  color-scheme: light;
   /* Brand colors */
   --primary: rgb(0, 102, 255);
   --primary-hover: rgb(0, 71, 204);
   --accent: rgb(0, 229, 255);
 
   /* Backgrounds */
-  --background: rgb(245, 249, 255);
-  --surface: rgb(255, 255, 255);
+  --background: rgb(235, 241, 250);
+  --surface: rgb(248, 250, 255);
   --dark: rgb(5, 10, 20);
   --navy: rgb(7, 20, 38);
 
   /* Text */
   --foreground: rgb(7, 20, 38);
-  --muted-foreground: rgb(100, 116, 139);
+  --muted-foreground: rgb(77, 96, 122);
 
   /* Borders */
-  --border: rgb(226, 232, 240);
+  --border: rgb(213, 223, 238);
 
   /* Brand gradient */
   --brand-gradient: linear-gradient(
@@ -28,14 +29,26 @@
   );
 }
 
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --primary: rgb(112, 167, 255);
+  --primary-hover: rgb(151, 192, 255);
+  --background: rgb(12, 21, 36);
+  --surface: rgb(23, 36, 55);
+  --foreground: rgb(230, 238, 250);
+  --muted-foreground: rgb(161, 179, 204);
+  --border: rgb(49, 67, 91);
+}
+
 @theme inline {
+  --color-on-primary: #fff;
   --color-primary: var(--primary);
   --color-primary-hover: var(--primary-hover);
   --color-primary-soft: color-mix(in srgb, var(--primary) 8%, var(--surface));
   --color-primary-subtle: color-mix(in srgb, var(--primary) 16%, var(--surface));
   --color-primary-border: color-mix(in srgb, var(--primary) 28%, var(--surface));
   --color-primary-light: color-mix(in srgb, var(--primary) 65%, var(--surface));
-  --color-on-brand-muted: color-mix(in srgb, var(--surface) 90%, var(--accent));
+  --color-on-brand-muted: color-mix(in srgb, #fff 90%, var(--accent));
   --color-accent: var(--accent);
   --color-background: var(--background);
   --color-surface: var(--surface);
@@ -48,8 +61,21 @@
 
 @layer base {
   body {
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     background-color: var(--background);
     color: var(--foreground);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]) {
+    cursor: pointer;
+  }
+
+  :where(a, button, input, select, textarea):focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 3px;
   }
 
   ::selection {
@@ -58,6 +84,123 @@
   }
 }
 
+/* Shared application surfaces; authentication pages use their own layouts. */
+@layer components {
+  .app-shell {
+    background-image:
+      radial-gradient(ellipse at top left, rgb(0 102 255 / 12%), transparent 55%),
+      radial-gradient(ellipse at bottom right, rgb(0 155 180 / 8%), transparent 55%);
+  }
+
+  .app-content {
+    min-width: 0;
+  }
+
+  .app-content :where(h1, h2, h3) {
+    letter-spacing: -0.025em;
+    text-wrap: balance;
+  }
+
+  .app-content h1 {
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    line-height: 1.2;
+    font-weight: 600;
+  }
+
+  .app-content :where(p) {
+    line-height: 1.65;
+  }
+
+  .app-content :where(.rounded-2xl.border.bg-surface, .rounded-3xl.border.bg-surface) {
+    border-radius: 1.5rem;
+    box-shadow: 0 8px 28px -16px rgb(7 20 38 / 24%);
+  }
+
+  .app-content :where(input:not([type="checkbox"]):not([type="radio"]):not([type="file"]), select, textarea) {
+    border-radius: 0.75rem;
+    transition: border-color 150ms, box-shadow 150ms, background-color 150ms;
+  }
+
+  .app-content :where(input, select, textarea):focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px var(--color-primary-soft);
+  }
+
+  .app-content :where(button.bg-primary, a.bg-primary) {
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 12px rgb(0 102 255 / 12%);
+    transition: background-color 150ms, box-shadow 150ms;
+  }
+
+  :root[data-theme="dark"] :where(.bg-primary, .bg-primary-hover) {
+    color: var(--navy);
+  }
+
+  :root[data-theme="dark"] :where(.border-white\/80) {
+    border-color: var(--border);
+  }
+
+  .app-content :where(table) {
+    font-variant-numeric: tabular-nums;
+  }
+
+  .app-content :where(thead th) {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.075em;
+    white-space: nowrap;
+  }
+
+  .app-content :where(tbody tr) {
+    transition: background-color 150ms;
+  }
+
+  .app-content :where(tbody tr:hover) {
+    background-color: var(--color-primary-soft);
+  }
+
+  .storefront-hero {
+    background:
+      radial-gradient(ellipse at top right, rgb(0 102 255 / 40%), transparent 60%),
+      radial-gradient(ellipse at bottom right, rgb(0 229 255 / 10%), transparent 50%),
+      var(--navy);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 @utility bg-brand-gradient {
   background-image: var(--brand-gradient);
 }
+
+/* Status backgrounds also cover opacity utilities such as bg-red-100/50. */
+:root[data-theme="dark"] {
+  --color-red-50: rgb(252 165 165 / 10%);
+  --color-red-100: rgb(252 165 165 / 16%);
+  --color-amber-50: rgb(251 191 36 / 10%);
+  --color-amber-100: rgb(251 191 36 / 16%);
+  --color-emerald-50: rgb(52 211 153 / 10%);
+  --color-emerald-100: rgb(52 211 153 / 16%);
+  --color-green-50: rgb(74 222 128 / 10%);
+  --color-green-100: rgb(74 222 128 / 16%);
+  --color-orange-50: rgb(251 146 60 / 10%);
+  --color-orange-100: rgb(251 146 60 / 16%);
+}
+:root[data-theme="dark"] :is(.border-red-100, .border-red-200, .border-red-300, .border-red-400) { border-color: rgb(252 165 165 / 35%); }
+:root[data-theme="dark"] :is(.text-red-500, .text-red-600, .text-red-700, .text-red-800, .text-red-900) { color: rgb(252 165 165); }
+:root[data-theme="dark"] :is(.border-amber-100, .border-amber-200, .border-amber-300, .border-amber-400) { border-color: rgb(251 191 36 / 35%); }
+:root[data-theme="dark"] :is(.text-amber-500, .text-amber-600, .text-amber-700, .text-amber-800, .text-amber-900) { color: rgb(251 191 36); }
+:root[data-theme="dark"] :is(.border-emerald-100, .border-emerald-200, .border-emerald-300, .border-emerald-400) { border-color: rgb(52 211 153 / 35%); }
+:root[data-theme="dark"] :is(.text-emerald-500, .text-emerald-600, .text-emerald-700, .text-emerald-800, .text-emerald-900) { color: rgb(52 211 153); }
+:root[data-theme="dark"] :is(.border-green-100, .border-green-200, .border-green-300, .border-green-400) { border-color: rgb(74 222 128 / 35%); }
+:root[data-theme="dark"] :is(.text-green-500, .text-green-600, .text-green-700, .text-green-800, .text-green-900) { color: rgb(74 222 128); }
+:root[data-theme="dark"] :is(.border-orange-100, .border-orange-200, .border-orange-300, .border-orange-400) { border-color: rgb(251 146 60 / 35%); }
+:root[data-theme="dark"] :is(.text-orange-500, .text-orange-600, .text-orange-700, .text-orange-800, .text-orange-900) { color: rgb(251 146 60); }

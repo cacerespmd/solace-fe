@@ -455,7 +455,7 @@ onMounted(fetchTickets);
                 :key="nextStatus"
                 type="button"
                 :disabled="saving"
-                class="rounded-xl bg-primary px-4 py-2 text-sm font-medium text-surface hover:bg-primary-hover disabled:cursor-not-allowed disabled:opacity-50"
+                class="rounded-xl bg-primary px-4 py-2 text-sm font-medium text-on-primary hover:bg-primary-hover disabled:cursor-not-allowed disabled:opacity-50"
                 @click="updateStatus(selectedTicket, nextStatus)"
               >
                 {{ saving ? 'Saving...' : nextStatus === 'cancellation_accepted' ? 'Cancel Order' : nextStatus === 'cancellation_declined' ? 'Reject Cancel Request' : statusLabels[nextStatus] }}

@@ -366,7 +366,7 @@ const submitProduct = async () => {
             <button
               type="submit"
               :disabled="loading"
-              class="rounded-xl bg-primary px-6 py-3 text-sm font-semibold text-surface hover:bg-primary-hover disabled:opacity-50"
+              class="rounded-xl bg-primary px-6 py-3 text-sm font-semibold text-on-primary hover:bg-primary-hover disabled:opacity-50"
             >
               {{
                 loading
@@ -401,7 +401,7 @@ const submitProduct = async () => {
         <button
           type="button"
           :disabled="loading || !!createdProductId"
-          class="rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-surface hover:bg-primary-hover disabled:opacity-50"
+          class="rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-on-primary hover:bg-primary-hover disabled:opacity-50"
           @click="addDocument"
         >
           + Add Document
@@ -506,7 +506,7 @@ const submitProduct = async () => {
 
           <button
             type="submit"
-            class="rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-surface"
+            class="rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-on-primary"
           >
             Add Document
           </button>

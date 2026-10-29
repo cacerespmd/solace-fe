@@ -206,8 +206,9 @@ async function handleCheckout() {
   <div>
     <!-- Page Header -->
     <div class="mb-8">
-      <h1 class="text-3xl font-bold text-foreground">
-        Shopping Cart
+      <p class="mb-3 text-xs font-semibold uppercase tracking-widest text-primary">Your next upgrade</p>
+      <h1 class="text-3xl font-semibold tracking-tight text-foreground">
+        Shopping cart
       </h1>
 
       <p class="mt-2 text-sm text-muted-foreground">
@@ -264,7 +265,7 @@ async function handleCheckout() {
 
       <RouterLink
         to="/"
-        class="mt-6 inline-flex rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-surface"
+        class="mt-6 inline-flex rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-on-primary"
       >
         Browse Products
       </RouterLink>
@@ -681,7 +682,7 @@ async function handleCheckout() {
           type="submit"
           form="delivery-form"
           :disabled="checkingOut || isUpdating || cart.items.length === 0"
-          class="mt-6 w-full rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-surface transition hover:bg-primary-hover disabled:cursor-not-allowed disabled:bg-border"
+          class="mt-6 w-full rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-on-primary transition hover:bg-primary-hover disabled:cursor-not-allowed disabled:bg-border"
         >
           {{ checkingOut ? "Placing Order..." : "Place Order" }}
         </button>

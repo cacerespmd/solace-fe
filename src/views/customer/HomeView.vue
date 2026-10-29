@@ -1,7 +1,7 @@
 
 <script setup>
 import { computed, onMounted, ref } from "vue";
-import { Search, X } from "@lucide/vue";
+import { ArrowRight, MessageCircle, Package, Search, Sparkles, X } from "@lucide/vue";
 import { RouterLink } from "vue-router";
 import api from "../../api/axios.js";
 
@@ -46,36 +46,46 @@ onMounted(fetchProducts);
 
 <template>
   <div>
-    <section class="mb-12 rounded-3xl bg-brand-gradient px-8 py-14 text-surface">
-      <p class="mb-3 text-sm font-semibold uppercase tracking-widest text-on-brand-muted">
+    <section class="storefront-hero relative mb-12 overflow-hidden rounded-3xl px-6 py-10 text-on-primary sm:px-12 sm:py-14">
+      <div class="relative z-10 max-w-2xl">
+      <span class="mb-6 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-xs font-medium text-white/80">
+        <Sparkles :size="14" class="text-accent" aria-hidden="true" />
         Welcome to Voltech
-      </p>
+      </span>
 
-      <h1 class="max-w-2xl text-4xl font-bold leading-tight sm:text-5xl">
-        Shop with confidence.
+      <h1 class="max-w-2xl !text-4xl !font-semibold leading-tight sm:!text-5xl">
+        Power your digital life.
       </h1>
 
-      <p class="mt-5 max-w-xl text-base text-on-brand-muted">
-        Discover products backed by intelligent assistance and genuine care.
+      <p class="mt-5 max-w-md text-sm leading-7 text-white/65 sm:text-base">
+        Find your next upgrade, with a little help from SolaceAI. Explore our collection and shop with confidence.
       </p>
 
       <a
         href="#products"
-        class="mt-8 inline-flex rounded-xl bg-surface px-6 py-3 text-sm font-semibold text-primary-hover hover:bg-primary-soft"
+        class="mt-8 inline-flex items-center gap-3 rounded-xl bg-primary px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-primary-hover"
       >
         Explore Products
+        <ArrowRight :size="17" aria-hidden="true" />
       </a>
+      <div class="mt-8 flex flex-wrap gap-x-6 gap-y-3 border-t border-white/10 pt-6 text-xs text-white/65">
+        <span class="inline-flex items-center gap-2"><Package :size="16" class="text-accent" aria-hidden="true" /> Browse. Order. Track.</span>
+        <span class="inline-flex items-center gap-2"><MessageCircle :size="16" class="text-accent" aria-hidden="true" /> Support from SolaceAI</span>
+      </div>
+      </div>
+      <div aria-hidden="true" class="pointer-events-none absolute -right-20 top-8 hidden h-80 w-80 rounded-full border border-white/10 lg:block"></div>
+      <div aria-hidden="true" class="pointer-events-none absolute -right-4 top-24 hidden h-48 w-48 rounded-full border border-white/10 bg-white/5 lg:block"></div>
     </section>
 
     <section id="products">
-      <div class="mb-7 flex items-center justify-between">
+      <div class="mb-7 flex flex-wrap items-center justify-between gap-4">
         <div>
           <h2 class="text-2xl font-bold text-foreground">
-            Our Products
+            Find your next favorite
           </h2>
 
           <p class="mt-1 text-sm text-muted-foreground">
-            Explore our latest collection.
+            Explore the latest in our collection.
           </p>
         </div>
 
@@ -149,7 +159,7 @@ onMounted(fetchProducts);
           v-for="product in filteredProducts"
           :key="product.id"
           :to="`/products/${product.id}`"
-          class="group overflow-hidden rounded-2xl border border-border bg-surface transition hover:-translate-y-1 hover:shadow-lg"
+          class="group overflow-hidden rounded-2xl border border-border bg-surface transition hover:-translate-y-1 hover:border-primary-border hover:shadow-lg"
         >
           <div class="flex aspect-square items-center justify-center bg-background">
             <img
@@ -185,7 +195,7 @@ onMounted(fetchProducts);
             </p>
 
             <div
-              class="mt-5 rounded-lg bg-primary-soft px-4 py-3 text-center text-sm font-semibold text-primary group-hover:bg-primary group-hover:text-surface"
+              class="mt-5 rounded-lg bg-primary-soft px-4 py-3 text-center text-sm font-semibold text-primary group-hover:bg-primary group-hover:text-on-primary"
             >
               View Product
             </div>

@@ -498,7 +498,7 @@ onMounted(fetchProduct);
               <button
                 type="submit"
                 :disabled="saving"
-                class="rounded-xl bg-primary px-6 py-3 text-sm font-semibold text-surface hover:bg-primary-hover disabled:cursor-not-allowed disabled:opacity-50"
+                class="rounded-xl bg-primary px-6 py-3 text-sm font-semibold text-on-primary hover:bg-primary-hover disabled:cursor-not-allowed disabled:opacity-50"
               >
                 {{ saving ? "Saving..." : "Save Changes" }}
               </button>
@@ -526,7 +526,7 @@ onMounted(fetchProduct);
 
           <button
             type="button"
-            class="rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-surface hover:bg-primary-hover"
+            class="rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-on-primary hover:bg-primary-hover"
             @click="addDocument"
           >
             + Add Document
@@ -644,7 +644,7 @@ onMounted(fetchProduct);
             <button
               type="submit"
               :disabled="savingDocument"
-              class="rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-surface disabled:opacity-50"
+              class="rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-on-primary disabled:opacity-50"
             >
               {{
                 savingDocument
