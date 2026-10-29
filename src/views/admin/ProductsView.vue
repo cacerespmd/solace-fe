@@ -1,10 +1,21 @@
 <script setup>
-import { onMounted, ref } from "vue";
+import { computed, onMounted, ref } from "vue";
+import { Search, X } from "@lucide/vue";
 import api from "../../api/axios";
 
 const products = ref([]);
 const loading = ref(false);
 const error = ref("");
+const searchQuery = ref("");
+const filteredProducts = computed(() => {
+  const query = searchQuery.value.trim().toLowerCase();
+  if (!query) return products.value;
+  return products.value.filter((product) =>
+    [product.name, product.sku].some((value) =>
+      String(value ?? "").toLowerCase().includes(query),
+    ),
+  );
+});
 
 const fetchProducts = async () => {
   loading.value = true;
@@ -50,6 +61,25 @@ onMounted(fetchProducts);
     </div>
 
     <div class="overflow-hidden rounded-2xl border border-border bg-surface">
+      <div class="flex flex-col gap-3 border-b border-border p-4 sm:flex-row sm:items-center sm:justify-between sm:px-6">
+        <div class="relative w-full sm:max-w-md">
+          <label for="admin-product-search" class="sr-only">Search products by name or SKU</label>
+          <Search :size="18" class="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground" aria-hidden="true" />
+          <input
+            id="admin-product-search"
+            v-model="searchQuery"
+            type="search"
+            placeholder="Search by product name or SKU..."
+            class="min-h-11 w-full rounded-xl border border-border bg-background/60 py-3 pl-11 pr-12 text-sm text-foreground outline-none [&::-webkit-search-cancel-button]:appearance-none"
+          />
+          <button v-if="searchQuery" type="button" aria-label="Clear product search" class="absolute inset-y-0 right-0 flex w-11 items-center justify-center rounded-r-xl text-muted-foreground hover:text-primary" @click="searchQuery = ''">
+            <X :size="17" aria-hidden="true" />
+          </button>
+        </div>
+        <p v-if="!loading && !error" role="status" class="text-xs text-muted-foreground">
+          {{ filteredProducts.length }} of {{ products.length }} products
+        </p>
+      </div>
       <div v-if="loading" class="p-8 text-center text-muted-foreground">
         Loading products...
       </div>
@@ -63,6 +93,13 @@ onMounted(fetchProducts);
         class="p-10 text-center text-muted-foreground"
       >
         No active products found.
+      </div>
+
+      <div v-else-if="filteredProducts.length === 0" class="px-6 py-14 text-center">
+        <Search :size="28" class="mx-auto mb-4 text-muted-foreground" aria-hidden="true" />
+        <p class="font-semibold text-foreground">No matching products</p>
+        <p class="mt-2 text-sm text-muted-foreground">Try another product name or SKU.</p>
+        <button type="button" class="mt-4 rounded-lg px-3 py-2 text-sm font-semibold text-primary hover:bg-primary-soft" @click="searchQuery = ''">Clear search</button>
       </div>
 
       <div v-else class="overflow-x-auto">
@@ -79,7 +116,7 @@ onMounted(fetchProducts);
           </thead>
 
           <tbody class="divide-y divide-border">
-            <tr v-for="product in products" :key="product.id">
+            <tr v-for="product in filteredProducts" :key="product.id">
               <td class="px-6 py-4">
                 <div class="flex items-center gap-3">
                   <img
