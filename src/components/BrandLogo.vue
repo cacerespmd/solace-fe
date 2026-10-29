@@ -12,6 +12,7 @@ defineProps({
 <template>
   <span class="inline-flex items-center">
     <img v-if="variant === 'logo'" :src="logo" :alt="alt" class="h-full w-auto" />
+    <img v-else-if="variant === 'header-light'" :src="headerLight" :alt="alt" class="h-full w-auto" />
     <template v-else>
       <img :src="header" :alt="alt" class="brand-logo-day h-full w-auto" />
       <img :src="headerLight" :alt="alt" class="brand-logo-night h-full w-auto" />
@@ -23,5 +24,4 @@ defineProps({
 .brand-logo-night { display: none; }
 :root[data-theme="dark"] .brand-logo-day { display: none; }
 :root[data-theme="dark"] .brand-logo-night { display: block; }
-:root[data-theme="dark"] .admin-brand { background-color: transparent; }
 </style>

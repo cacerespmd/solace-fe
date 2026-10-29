@@ -46,8 +46,8 @@ const logout = () => {
       :class="sidebarOpen ? 'translate-x-0' : '-translate-x-full'"
     >
       <div class="flex h-24 items-center justify-between border-b border-white/10 px-6">
-        <RouterLink to="/admin" class="admin-brand rounded-xl bg-white px-3 py-1" @click="sidebarOpen = false">
-          <BrandLogo alt="Voltech dashboard" class="h-12" />
+        <RouterLink to="/admin" class="rounded-xl px-3 py-1" @click="sidebarOpen = false">
+          <BrandLogo variant="header-light" alt="Voltech dashboard" class="h-12" />
         </RouterLink>
         <button type="button" aria-label="Close navigation" class="rounded-lg p-2 text-white/70 hover:bg-white/10 lg:hidden" @click="sidebarOpen = false"><X :size="20" aria-hidden="true" /></button>
       </div>
