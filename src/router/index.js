@@ -109,6 +109,11 @@ const router = createRouter({
           name: "admin-support-tickets",
           component: () => import("../views/admin/SupportTicketsView.vue"),
         },
+        {
+          path: "users",
+          name: "admin-users",
+          component: () => import("../views/admin/UsersView.vue"),
+        },
       ],
     },
     {

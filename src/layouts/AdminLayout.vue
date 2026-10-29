@@ -2,7 +2,7 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import { RouterLink, RouterView, useRoute, useRouter } from 'vue-router'
-import { LayoutDashboard, Package, ShoppingBag, Tickets, LogOut, Menu, UserRound, X, ShieldCheck } from '@lucide/vue'
+import { LayoutDashboard, Package, ShoppingBag, Tickets, LogOut, Menu, UserRound, Users, X, ShieldCheck } from '@lucide/vue'
 import BrandLogo from '../components/BrandLogo.vue'
 import { useAuthStore } from '../stores/auth'
 
@@ -16,6 +16,7 @@ const navigation = [
   { name: 'Dashboard', path: '/admin', icon: LayoutDashboard },
   { name: 'Products', path: '/admin/products', icon: Package },
   { name: 'Orders', path: '/admin/orders', icon: ShoppingBag },
+  { name: 'Users', path: '/admin/users', icon: Users },
   { name: 'Support Tickets', path: '/admin/support-tickets', icon: Tickets },
 ]
 
